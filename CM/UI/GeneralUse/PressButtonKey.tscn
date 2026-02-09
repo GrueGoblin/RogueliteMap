@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CM/UI/GeneralUse/PressButtonKey.gd" type="Script" id=1]
+[ext_resource path="res://Game/Graphics/Progress32.png" type="Texture" id=2]
+
+[node name="PressButtonKey" type="Label"]
+margin_right = 32.0
+margin_bottom = 32.0
+text = "A"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0.247059 )
+
+[node name="Button" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="value_changed" from="TextureProgress" to="." method="_on_TextureProgress_value_changed"]
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

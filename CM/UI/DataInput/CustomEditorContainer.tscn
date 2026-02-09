@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/CustomEditorContainer.gd" type="Script" id=1]
+[ext_resource path="res://CM/UI/DataInput/EditorActions.tscn" type="PackedScene" id=2]
+
+[node name="CustomEditorContainer" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="HBoxContainer" parent="."]
+margin_right = 178.0
+margin_bottom = 32.0
+
+[node name="NameLabel" type="Label" parent="Header"]
+margin_top = 3.0
+margin_bottom = 29.0
+
+[node name="ShowButton" type="Button" parent="Header"]
+margin_left = 4.0
+margin_right = 23.0
+margin_bottom = 32.0
+text = "+"
+
+[node name="HideButton" type="Button" parent="Header"]
+visible = false
+margin_left = 28.0
+margin_right = 45.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="EditorActions" parent="." instance=ExtResource( 2 )]
+margin_top = 36.0
+margin_right = 178.0
+margin_bottom = 68.0
+
+[connection signal="pressed" from="Header/ShowButton" to="." method="_on_ShowButton_pressed"]
+[connection signal="pressed" from="Header/HideButton" to="." method="_on_HideButton_pressed"]
+[connection signal="delete" from="EditorActions" to="." method="_on_EditorActions_delete"]
+[connection signal="rename" from="EditorActions" to="." method="_on_EditorActions_rename"]
+[connection signal="save" from="EditorActions" to="." method="_on_EditorActions_save"]

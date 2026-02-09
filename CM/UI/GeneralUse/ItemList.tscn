@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://CM/UI/GeneralUse/ItemList.gd" type="Script" id=1]
+[ext_resource path="res://CM/Graphics/ArrowRight.png" type="Texture" id=2]
+[ext_resource path="res://CM/Graphics/ArrowDown.png" type="Texture" id=3]
+[ext_resource path="res://CM/Graphics/ArrowUp.png" type="Texture" id=4]
+[ext_resource path="res://CM/Graphics/ArrowLeft.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VerticalList" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="TextureButton" parent="VerticalList"]
+margin_right = 96.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 16 )
+texture_normal = ExtResource( 4 )
+
+[node name="List" type="VBoxContainer" parent="VerticalList"]
+margin_top = 36.0
+margin_right = 96.0
+margin_bottom = 36.0
+
+[node name="NextButton" type="TextureButton" parent="VerticalList"]
+margin_top = 40.0
+margin_right = 96.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+
+[node name="HorizontalList" type="HBoxContainer" parent="."]
+visible = false
+margin_right = 68.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="TextureButton" parent="HorizontalList"]
+margin_right = 32.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 16, 0 )
+texture_normal = ExtResource( 5 )
+
+[node name="List" type="HBoxContainer" parent="HorizontalList"]
+margin_left = 36.0
+margin_right = 36.0
+margin_bottom = 96.0
+
+[node name="NextButton" type="TextureButton" parent="HorizontalList"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 96.0
+texture_normal = ExtResource( 2 )
+
+[connection signal="pressed" from="VerticalList/PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[connection signal="pressed" from="VerticalList/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="HorizontalList/PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[connection signal="pressed" from="HorizontalList/NextButton" to="." method="_on_NextButton_pressed"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CM/UI/ContentTypeItem.gd" type="Script" id=1]
+
+[node name="ModelItem" type="HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 150.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 150, 0 )
+text = "Model 1"
+
+[node name="EditButton" type="Button" parent="."]
+margin_left = 154.0
+margin_right = 190.0
+margin_bottom = 20.0
+text = "Edit"
+
+[node name="DataButton" type="Button" parent="."]
+margin_left = 194.0
+margin_right = 288.0
+margin_bottom = 20.0
+text = "Manage Data"
+
+[node name="AddSubtypeButton" type="Button" parent="."]
+margin_left = 292.0
+margin_right = 400.0
+margin_bottom = 20.0
+text = "Create Subtype"
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 404.0
+margin_right = 459.0
+margin_bottom = 20.0
+text = "Delete"
+
+[node name="GenerateNRLists" type="Button" parent="."]
+margin_left = 463.0
+margin_right = 578.0
+margin_bottom = 20.0
+text = "Generate ToDos"
+
+[node name="CreateGenerator" type="Button" parent="."]
+margin_left = 582.0
+margin_right = 703.0
+margin_bottom = 20.0
+text = "Create Generator"
+
+[connection signal="pressed" from="EditButton" to="." method="_on_EditButton_pressed"]
+[connection signal="pressed" from="DataButton" to="." method="_on_DataButton_pressed"]
+[connection signal="pressed" from="AddSubtypeButton" to="." method="_on_AddSubtypeButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="GenerateNRLists" to="." method="_on_GenerateNRLists_pressed"]
+[connection signal="pressed" from="CreateGenerator" to="." method="_on_CreateGenerator_pressed"]

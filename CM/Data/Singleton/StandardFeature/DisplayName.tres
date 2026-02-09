@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://CM/Models/StandardFeature.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+field_name = "display_name"
+field_type = "String"
+field_subtype = "Translated"
+description = "As the resource's name is used for localizing other resources across the project, use this field for its translations instead."

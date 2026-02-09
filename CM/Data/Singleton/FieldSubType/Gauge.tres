@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://CM/Models/FieldSubType.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+available_for = [  ]
+var_lines = "export var {var_name} setget set_{var_name}
+export var {var_name}_max setget set_{var_name}_max
+export var {var_name}_spent setget set_{var_name}_spent"
+func_lines = "func set_{var_name}(value : {var_type}):
+	{var_name} = max(0,min(value,{var_name}_max))
+	{var_name}_spent = {var_name}_max - {var_name}
+	emit_changed()
+
+func set_{var_name}_max(value : {var_type}):
+	{var_name}_max = value
+	refill_{var_name}()
+	emit_changed()
+
+func set_{var_name}_spent(value : {var_type}):
+	{var_name}_spent = max(0,min(value,{var_name}_max))
+	{var_name} = {var_name}_max - {var_name}_spent
+	emit_changed()
+
+func refill_{var_name}():
+	self.{var_name}_spent = 0
+	emit_changed()"

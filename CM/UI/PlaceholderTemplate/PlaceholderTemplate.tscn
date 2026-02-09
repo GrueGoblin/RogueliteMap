@@ -1,0 +1,156 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CM/UI/PlaceholderTemplate/PlaceholderTemplate.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 0, 200 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 230.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Panel" parent="ScrollContainer/Container"]
+margin_right = 230.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Container/Header"]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PCTLabel" type="Label" parent="ScrollContainer/Container/Header/HBoxContainer"]
+margin_top = 3.0
+margin_right = 193.0
+margin_bottom = 17.0
+text = "Placeholder Content Template"
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/Container/Header/HBoxContainer"]
+margin_left = 197.0
+margin_right = 287.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 90, 0 )
+
+[node name="ToggleContent" type="Button" parent="ScrollContainer/Container/Header/HBoxContainer"]
+margin_left = 291.0
+margin_right = 308.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="Content" type="PanelContainer" parent="ScrollContainer/Container"]
+margin_top = 36.0
+margin_right = 230.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 0, 260 )
+
+[node name="ContentContainer" type="VBoxContainer" parent="ScrollContainer/Container/Content"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 223.0
+margin_bottom = 253.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="References" type="VBoxContainer" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_right = 216.0
+
+[node name="UseContentTypeName" type="HBoxContainer" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_top = 4.0
+margin_right = 216.0
+margin_bottom = 28.0
+
+[node name="UseContentTypeNameLabel" type="Label" parent="ScrollContainer/Container/Content/ContentContainer/UseContentTypeName"]
+margin_top = 5.0
+margin_right = 161.0
+margin_bottom = 19.0
+text = "Use Content Type Name?"
+
+[node name="UseContentTypeNameCheckBox" type="CheckBox" parent="ScrollContainer/Container/Content/ContentContainer/UseContentTypeName"]
+margin_left = 165.0
+margin_right = 189.0
+margin_bottom = 24.0
+pressed = true
+
+[node name="Sufix" type="HBoxContainer" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_top = 32.0
+margin_right = 216.0
+margin_bottom = 56.0
+
+[node name="SufixLabel" type="Label" parent="ScrollContainer/Container/Content/ContentContainer/Sufix"]
+margin_top = 5.0
+margin_right = 38.0
+margin_bottom = 19.0
+text = "Sufix: "
+
+[node name="SufixLineEdit" type="LineEdit" parent="ScrollContainer/Container/Content/ContentContainer/Sufix"]
+margin_left = 42.0
+margin_right = 100.0
+margin_bottom = 24.0
+
+[node name="Amount" type="HBoxContainer" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_top = 60.0
+margin_right = 216.0
+margin_bottom = 84.0
+hint_tooltip = "At amount = 1, the resources won't have numbered names."
+
+[node name="AmtLabel" type="Label" parent="ScrollContainer/Container/Content/ContentContainer/Amount"]
+margin_top = 5.0
+margin_right = 59.0
+margin_bottom = 19.0
+text = "Amount: "
+
+[node name="AmountValue" type="SpinBox" parent="ScrollContainer/Container/Content/ContentContainer/Amount"]
+margin_left = 63.0
+margin_right = 137.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 1.0
+
+[node name="Separator" type="Label" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_top = 88.0
+margin_right = 216.0
+margin_bottom = 102.0
+text = "==========================="
+
+[node name="Preview" type="HBoxContainer" parent="ScrollContainer/Container/Content/ContentContainer"]
+margin_top = 106.0
+margin_right = 216.0
+margin_bottom = 120.0
+
+[node name="PreviewLabel" type="Label" parent="ScrollContainer/Container/Content/ContentContainer/Preview"]
+margin_right = 62.0
+margin_bottom = 14.0
+text = "Example: "
+
+[node name="Example" type="Label" parent="ScrollContainer/Container/Content/ContentContainer/Preview"]
+margin_left = 66.0
+margin_right = 173.0
+margin_bottom = 14.0
+text = "LeafMagicMaster"
+
+[connection signal="pressed" from="ScrollContainer/Container/Header/HBoxContainer/ToggleContent" to="." method="_on_ToggleContent_pressed"]
+[connection signal="toggled" from="ScrollContainer/Container/Content/ContentContainer/UseContentTypeName/UseContentTypeNameCheckBox" to="." method="_on_UseContentTypeNameCheckBox_toggled"]
+[connection signal="text_changed" from="ScrollContainer/Container/Content/ContentContainer/Sufix/SufixLineEdit" to="." method="_on_SufixLineEdit_text_changed"]
+[connection signal="value_changed" from="ScrollContainer/Container/Content/ContentContainer/Amount/AmountValue" to="." method="_on_AmountValue_value_changed"]

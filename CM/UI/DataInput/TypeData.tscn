@@ -1,0 +1,259 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/TypeData.gd" type="Script" id=1]
+[ext_resource path="res://CM/UI/DataInput/Filters/Filter.tscn" type="PackedScene" id=2]
+
+[node name="TypeData" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1200.0
+margin_bottom = 16.0
+text = "Manage data for Type {type_name}"
+align = 1
+
+[node name="DefinitionDescriptionContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 20.0
+margin_right = 1200.0
+margin_bottom = 50.0
+
+[node name="DefinitionDescriptionLabel" type="Label" parent="VBoxContainer/DefinitionDescriptionContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1193.0
+margin_bottom = 23.0
+align = 1
+
+[node name="SingletonFilter" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 54.0
+margin_right = 1200.0
+margin_bottom = 76.0
+
+[node name="ItemsScroll" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 1200.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 0, 500 )
+
+[node name="Items" type="VBoxContainer" parent="VBoxContainer/ItemsScroll"]
+margin_right = 600.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 600, 260 )
+
+[node name="AddItemButton" type="Button" parent="VBoxContainer"]
+margin_top = 584.0
+margin_right = 1200.0
+margin_bottom = 606.0
+text = "Add New Item"
+
+[node name="SaveAllButton" type="Button" parent="VBoxContainer"]
+margin_top = 610.0
+margin_right = 1200.0
+margin_bottom = 632.0
+text = "Save All"
+
+[node name="GenerateContentButton" type="Button" parent="VBoxContainer"]
+margin_top = 636.0
+margin_right = 1200.0
+margin_bottom = 658.0
+text = "Generate Placeholder Content"
+
+[node name="GenerateNamedContent" type="Button" parent="VBoxContainer"]
+margin_top = 662.0
+margin_right = 1200.0
+margin_bottom = 684.0
+text = "Generate Named Content"
+
+[node name="DeleteAllButton" type="Button" parent="VBoxContainer"]
+margin_top = 688.0
+margin_right = 1200.0
+margin_bottom = 710.0
+text = "Delete All"
+
+[node name="BackToMenu" type="Button" parent="VBoxContainer"]
+margin_top = 714.0
+margin_right = 1200.0
+margin_bottom = 736.0
+text = "Back to Menu"
+
+[node name="NewItemDialogue" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -20.0
+margin_right = 217.0
+margin_bottom = 61.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewItemContent" type="VBoxContainer" parent="NewItemDialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewItemDialogue/NewItemContent"]
+margin_right = 241.0
+margin_bottom = 14.0
+text = "Select an unique name for new item"
+
+[node name="Input" type="LineEdit" parent="NewItemDialogue/NewItemContent"]
+margin_top = 18.0
+margin_right = 241.0
+margin_bottom = 42.0
+
+[node name="NewItemConfirmButton" type="Button" parent="NewItemDialogue/NewItemContent"]
+margin_top = 46.0
+margin_right = 241.0
+margin_bottom = 66.0
+text = "Confirm"
+
+[node name="GenerateDialogue" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -20.0
+margin_right = 217.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GenerateContent" type="VBoxContainer" parent="GenerateDialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GenerateDialogue/GenerateContent"]
+margin_right = 304.0
+margin_bottom = 122.0
+text = "Do you want to generate content 
+from the current template
+specified for this model?
+(You can review the template in
+the model definition screen)"
+
+[node name="SpinBox" type="SpinBox" parent="GenerateDialogue/GenerateContent"]
+visible = false
+margin_top = 117.0
+margin_right = 241.0
+margin_bottom = 153.0
+min_value = 1.0
+value = 1.0
+
+[node name="GenerateConfirmButton" type="Button" parent="GenerateDialogue/GenerateContent"]
+margin_top = 126.0
+margin_right = 304.0
+margin_bottom = 154.0
+text = "Confirm"
+
+[node name="DeleteAllDialogue" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -20.0
+margin_right = 217.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteAllContent" type="VBoxContainer" parent="DeleteAllDialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DeleteAllDialogue/DeleteAllContent"]
+margin_right = 241.0
+margin_bottom = 72.0
+text = "Do you want to delete 
+all data for this model?
+ (there is no undoing this)"
+
+[node name="DeleteAllConfirmButton" type="Button" parent="DeleteAllDialogue/DeleteAllContent"]
+margin_top = 76.0
+margin_right = 241.0
+margin_bottom = 104.0
+text = "Confirm"
+
+[node name="GenerateNamedDialogue" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -20.0
+margin_right = 217.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteAllContent" type="VBoxContainer" parent="GenerateNamedDialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GenerateNamedDialogue/DeleteAllContent"]
+margin_right = 241.0
+margin_bottom = 72.0
+text = "Do you want to generate data based on existing named resources?"
+
+[node name="GenerateNamedConfirmButton" type="Button" parent="GenerateNamedDialogue/DeleteAllContent"]
+margin_top = 76.0
+margin_right = 241.0
+margin_bottom = 104.0
+text = "Confirm"
+
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = -59.5
+margin_right = 127.0
+margin_bottom = 59.5
+window_title = "Error"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="apply_filter" from="VBoxContainer/SingletonFilter" to="." method="_on_SingletonFilter_apply_filter"]
+[connection signal="clear_filter" from="VBoxContainer/SingletonFilter" to="." method="_on_SingletonFilter_clear_filter"]
+[connection signal="pressed" from="VBoxContainer/AddItemButton" to="." method="_on_AddItemButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/SaveAllButton" to="." method="_on_SaveAllButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/GenerateContentButton" to="." method="_on_GenerateContentButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/GenerateNamedContent" to="." method="_on_GenerateNamedContent_pressed"]
+[connection signal="pressed" from="VBoxContainer/DeleteAllButton" to="." method="_on_DeleteAllButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenu" to="." method="_on_BackToMenu_pressed"]
+[connection signal="pressed" from="NewItemDialogue/NewItemContent/NewItemConfirmButton" to="." method="_on_NewItemConfirmButton_pressed"]
+[connection signal="pressed" from="GenerateDialogue/GenerateContent/GenerateConfirmButton" to="." method="_on_GenerateConfirmButton_pressed"]
+[connection signal="pressed" from="DeleteAllDialogue/DeleteAllContent/DeleteAllConfirmButton" to="." method="_on_DeleteAllConfirmButton_pressed"]
+[connection signal="pressed" from="GenerateNamedDialogue/DeleteAllContent/GenerateNamedConfirmButton" to="." method="_on_GenerateNamedConfirmButton_pressed"]

@@ -1,0 +1,270 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://CM/UI/CreateType.gd" type="Script" id=1]
+[ext_resource path="res://CM/Context/Scenes/ContextGeneration.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CM/UI/PlaceholderTemplate/PlaceholderTemplate.tscn" type="PackedScene" id=3]
+
+[node name="CreateModel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 652.0
+margin_bottom = 678.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_right = 652.0
+margin_bottom = 16.0
+text = "Create new Content Type"
+align = 1
+
+[node name="InheritLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 18.0
+margin_right = 1920.0
+margin_bottom = 32.0
+text = "(inherits {model_name})"
+align = 1
+
+[node name="MarginContainer" type="Control" parent="ScrollContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 652.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 18 )
+
+[node name="ModelNameCont" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 652.0
+margin_bottom = 68.0
+hint_tooltip = "Unique model name in PascalCase. This will also be used as a class_name."
+
+[node name="ModelNameLabel" type="Label" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_top = 5.0
+margin_right = 61.0
+margin_bottom = 21.0
+text = "Type Name"
+
+[node name="ModelNameInput" type="LineEdit" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 65.0
+margin_right = 265.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 269.0
+margin_top = 5.0
+margin_right = 334.0
+margin_bottom = 21.0
+text = "Singleton?"
+
+[node name="Singleton" type="CheckBox" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 338.0
+margin_right = 362.0
+margin_bottom = 26.0
+hint_tooltip = "Check this field if you only want to instance the resources of this content only once globally and referenced as such.
+The \"find\" method of Content will always return an unique duplicated resource each time if unchecked..."
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 366.0
+margin_top = 5.0
+margin_right = 477.0
+margin_bottom = 21.0
+text = "Subresource Only?"
+
+[node name="Subresource" type="CheckBox" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 481.0
+margin_right = 505.0
+margin_bottom = 26.0
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+visible = false
+margin_left = 528.0
+margin_top = 5.0
+margin_right = 630.0
+margin_bottom = 19.0
+hint_tooltip = "Whether to save/load this content items in encrypted format. Use for scoreboards and savegames."
+mouse_filter = 1
+text = "Save Encrypted?"
+
+[node name="SaveEncrypted" type="CheckBox" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+visible = false
+margin_left = 528.0
+margin_right = 552.0
+margin_bottom = 24.0
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 509.0
+margin_top = 5.0
+margin_right = 613.0
+margin_bottom = 21.0
+hint_tooltip = "Creates {name}Type content type along this one. Reference to the type will be added into this model."
+mouse_filter = 1
+text = "Type Scaffolding"
+
+[node name="Scaffolding" type="CheckBox" parent="ScrollContainer/VBoxContainer/ModelNameCont"]
+margin_left = 617.0
+margin_right = 641.0
+margin_bottom = 26.0
+
+[node name="ModelGroup" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 652.0
+margin_bottom = 94.0
+
+[node name="GroupLabel" type="Label" parent="ScrollContainer/VBoxContainer/ModelGroup"]
+margin_top = 3.0
+margin_right = 65.0
+margin_bottom = 19.0
+text = "Type Group"
+
+[node name="GroupSelection" type="OptionButton" parent="ScrollContainer/VBoxContainer/ModelGroup"]
+margin_left = 69.0
+margin_right = 98.0
+margin_bottom = 22.0
+
+[node name="ErrorFlash" type="Label" parent="ScrollContainer/VBoxContainer"]
+modulate = Color( 0.94902, 0.215686, 0.0509804, 1 )
+margin_top = 98.0
+margin_right = 652.0
+margin_bottom = 114.0
+align = 1
+
+[node name="ErrorTimer" type="Timer" parent="ScrollContainer/VBoxContainer/ErrorFlash"]
+wait_time = 20.0
+
+[node name="Description" type="TextEdit" parent="ScrollContainer/VBoxContainer"]
+margin_top = 118.0
+margin_right = 652.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 0, 92 )
+
+[node name="MarginContainer2" type="Control" parent="ScrollContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 652.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 0, 18 )
+
+[node name="AddStandardFeatures" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 236.0
+margin_right = 652.0
+margin_bottom = 252.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AddStandardFeatures"]
+margin_right = 115.0
+margin_bottom = 16.0
+text = "Standard features:"
+
+[node name="BasicFieldsLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 652.0
+margin_bottom = 272.0
+text = "Basic Fields:"
+
+[node name="BasicFieldsList" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 276.0
+margin_right = 652.0
+margin_bottom = 292.0
+
+[node name="LabelsContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/BasicFieldsList"]
+margin_right = 652.0
+margin_bottom = 16.0
+
+[node name="NameLabel" type="Label" parent="ScrollContainer/VBoxContainer/BasicFieldsList/LabelsContainer"]
+margin_right = 160.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 160, 0 )
+text = "Variable name"
+
+[node name="TypeLabel" type="Label" parent="ScrollContainer/VBoxContainer/BasicFieldsList/LabelsContainer"]
+margin_left = 164.0
+margin_right = 324.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 160, 0 )
+text = "Variable type"
+
+[node name="SubtypeLabel" type="Label" parent="ScrollContainer/VBoxContainer/BasicFieldsList/LabelsContainer"]
+margin_left = 328.0
+margin_right = 488.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 160, 0 )
+text = "Variable subtype"
+
+[node name="DefaultLabel" type="Label" parent="ScrollContainer/VBoxContainer/BasicFieldsList/LabelsContainer"]
+margin_left = 492.0
+margin_right = 652.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 160, 0 )
+text = "Default Value"
+
+[node name="AddDataField" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_top = 296.0
+margin_right = 652.0
+margin_bottom = 318.0
+text = "Add Field"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_top = 322.0
+margin_right = 652.0
+margin_bottom = 344.0
+text = "Save the Content Type"
+
+[node name="ExitToMenu" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 652.0
+margin_bottom = 370.0
+text = "Exit to Menu"
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 374.0
+margin_right = 652.0
+margin_bottom = 474.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 478.0
+margin_right = 652.0
+margin_bottom = 678.0
+
+[node name="ContextGenerate" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 390.0
+margin_bottom = 200.0
+
+[node name="ContentTemplate" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 394.0
+margin_right = 394.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/ModelNameCont/ModelNameInput" to="." method="set_type_name"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/ModelNameCont/Singleton" to="." method="_on_Singleton_toggled"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/ModelNameCont/Subresource" to="." method="_on_Subresource_toggled"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/ModelNameCont/SaveEncrypted" to="." method="_on_SaveEncrypted_toggled"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/ModelNameCont/Scaffolding" to="." method="_on_Scaffolding_toggled"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/ModelGroup/GroupSelection" to="." method="_on_GroupSelection_item_selected"]
+[connection signal="timeout" from="ScrollContainer/VBoxContainer/ErrorFlash/ErrorTimer" to="." method="_on_ErrorTimer_timeout"]
+[connection signal="text_changed" from="ScrollContainer/VBoxContainer/Description" to="." method="_on_Description_text_changed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/AddDataField" to="." method="_on_AddDataField_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ExitToMenu" to="." method="_on_ExitToMenu_pressed"]

@@ -1,0 +1,20 @@
+[gd_scene format=2]
+
+[node name="Control" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -576.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="variable_name" type="LineEdit" parent="."]
+margin_right = 58.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="variable_name2" type="LineEdit" parent="."]
+margin_left = 62.0
+margin_right = 120.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )

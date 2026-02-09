@@ -1,0 +1,70 @@
+Introduction
+------------
+I really didn't want to post anything on this until the project was at least minimally viable. Now it got somewhat big (and surprisingly mostly functional), so I don't know where to start introducing it. :D Because of that, this post might get somewhat long. So bear with me.
+
+The working names are Content Manager or Content Management System. Originally it was set to be an universal database for content items, but even now it does a lot of other useful things than storing data. Namingly:
+
+- Object Relation Mapping
+- generation of basic scripts
+- generation of project structure (you usually don't want to spend time making these decisions, when you could spend it making the game, right?)
+- named resource mapping (this would be better explained separately, but it's one of the things that can make the development easier)
+
+Reasons behind CMS:
+-------------------
+I came from Ruby on Rails background. The main appeal of the workflow, among other things, is "convention over configuration" philosophy. You don't come up with project structure. It is generated for you and you just accept it - some trained programmers loathe that approach, because they know a slightly better way to organize the project (theoretically). But it comes with an enormous benefit. An Experienced RoR developer can instantly pick up on any project written in it, no matter how complex it is (as long as it adhers to conventions).
+
+I was quite surprised no such framework exists for game development (for Godot specifically), so I decided to make one on my own to suit my needs. So far I didn't decide if I want to make this a product or an opensource project. I guess it depends on your responses here as well. :)
+
+Storage of data:
+----------------
+Most people in gamedevelopment prefer JSON for data storage if I'm not wrong. Because json is lightweight and effective. I considered that as well, but I decided to store data in separate .tres files for convenience.
+
+If you want to use the data in your game from json, you have to map them to some sort of objects anyway. So why the extra step? By storing data in a Resource extending object, you can readily save and load it as a fully functional object with its own functions, signals etc.
+
+You can also edit the individual .tres files in Editor. The UI is currently limited and even if it wasn't, you probably don't want to open it just to tweak a single value (This is another advantage over json approach - while the format is somewhat readable, it still doesn't stand a chance compared to individual files in terms of manageability).
+
+Two types of data:
+------------------
+There are basically two types of data in CM: Singleton and Instanced. They behave differently in relations and the core AutoLoad node of the project, "Content", works differently with them. 
+
+Singleton objects are supposed to be all the same throughout the game. Typically this would encompass Damage types, Magic Schools or any other abstract categories you could think of. (You can use them for items, like weapons, as long as you don't mind the instances can't be modified separately) This means that when requested by name, ie. by syntax like Content.find("Weapon","Sword"), the method always returns the same resource reference.
+
+If the individual instances are supposed to differ in their status (like ammo loaded in weapon, durability of armor, current hp of a monster), an Instanced model is used instead. Content.find("Weapon","Sword") will return a resource duplicate instead, so any changes to it will not affect other instances...
+
+Models:
+-------
+Resources are defined by their models. This is a terminology from MVC pattern. Model is supposed to encompass all the business logic of an object. When you define a new model (singleton or instanced) in CMS UI (the framework is supposed to spare you writing as much repetetive code as possible - especially for a solodev, switching mindset between programmer and designer can be tiring), two scripts are actually created. A Models/Meta file, which is not supposed to be overwritten by user - here, all the UI defined fields, relations etc. are stored. And a custom script in Models, that extends the metamodel, has a class name and you can put all your custom functions into it.
+
+Field Types:
+------------
+Currently implemented from common types are: String, int, float, Color, PackedScene.
+
+There are few fields that represent relations:
+
+- Singleton Reference
+	This is basically a "belongs to" relationship towards a certain Singleton Type. Recently, I implemented a backward relation, so a MagicSchool object will have get_all_spells() function in its meta-model generated automatically when you define the Singleton Reference on Spell model.
+- Singleton Reference(Multi)
+	Basically an array of singleton references. Useful for tags. Backward relation is not implemented yet. In UI, this works as a list of checkboxes, so it might not be pretty for heavily populated Singletons.
+- Singleton Reference(Dictionary)
+	Very specific use case. Basically when you want to refer to all the singleton resources of certain type with value added. Armor has different int values against damage types, Researches have different progress status etc.
+- Subresource
+	Special form of instanced resource, that is supposed to be a data container inside another content type instance (can be typically shared between multiple types - like DamageVector resource - containing damage value and damage type, which can be shared by a Weapon, AttackSpell etc.). Some instanced resource types can be created as "subresource only", meaning that you can't actually create them in data management UI.
+- Subresource (Multi)
+	Not implemented yet. But you probably get the idea by now.
+- Named Resource
+	This field actually represents a constant path to another resource (texture, script, potentially sounds or even custom paths), which is filled in with content item type, name and name of variable referencing the them. So if you have a Fireball spell with an icon, the path to the icon will probably be "res://Game/Graphics/Spell/icon/Fireball.png". This can be very powerful, as the directories are generated automatically along with .txt todo list, so all you have to do is share the folder with your graphic dude (or look it up yourself when you feel like drawing).
+
+Planned Features:
+-----------------
+- Module Support: Enable creation and Usage of Modules that would behave similarly as the core project in "Game" folder. Solve registration of dependencies etc. Even CM itself could become a CM module (after some heavy refactoring), which would help me developing it further...
+- Placeholder content generation
+- Active record model: A general Resource object that would all content resources extend for some common utility logic. Like save() function, functions retrieving it's CM definition etc.
+- User content: So far, all the content produced is saved in res:// directory, so it can only be used for content generation during development. I want to allow also for on the run produced content for savegames, configurations, achievements or other user custom generated content.
+- Context scenes generator: So far, the CM automates basic scripting for basic data and relations between them, but one has to still create scenes to actually represent and modify the data from the user perspective (View - the V in MVC). But I believe, here is some room for automation in producing basic scenes and their scripts.
+
+Next Steps:
+-----------
+- In this post, I'll append some screenshots, but I think to fully illustrate what this thing is about a presentation video would be required. Since I never made one, It'll probably take me some time stepping over that milestone. :)
+- While the CM is not mature or User Friendly yet, so I would offer it for anyone else to use, but useful enough for me -knowing all its quirks and limitations- the best way to put its utility under test now, would be a game jam. Any suggestions?
+
+What do you think about the overall philosophy of this project?

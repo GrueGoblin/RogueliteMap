@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://CM/Models/StandardFeature.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+field_name = "position"
+field_type = "Vector2"
+field_subtype = ""
+description = "Position on placed resources."

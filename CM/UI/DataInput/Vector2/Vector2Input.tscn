@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/Vector2/Vector2Input.gd" type="Script" id=1]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XLabel" type="Label" parent="."]
+margin_top = 13.0
+margin_right = 8.0
+margin_bottom = 27.0
+text = "X"
+
+[node name="XSpinBox" type="SpinBox" parent="."]
+margin_left = 12.0
+margin_right = 86.0
+margin_bottom = 40.0
+min_value = -10000.0
+max_value = 10000.0
+
+[node name="YLabel" type="Label" parent="."]
+margin_left = 90.0
+margin_top = 13.0
+margin_right = 97.0
+margin_bottom = 27.0
+text = "Y"
+
+[node name="YSpinBox" type="SpinBox" parent="."]
+margin_left = 101.0
+margin_right = 175.0
+margin_bottom = 40.0
+min_value = -10000.0
+max_value = 10000.0
+
+[connection signal="value_changed" from="XSpinBox" to="." method="_on_XSpinBox_value_changed"]
+[connection signal="value_changed" from="YSpinBox" to="." method="_on_YSpinBox_value_changed"]

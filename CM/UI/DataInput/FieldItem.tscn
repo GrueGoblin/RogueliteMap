@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/ValueSelector.gd" type="Script" id=1]
+[ext_resource path="res://CM/UI/DataInput/FieldItem.gd" type="Script" id=2]
+[ext_resource path="res://CM/UI/DataInput/SingletonMultiInput/SingletonMultiSelection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CM/UI/DataInput/SubresourceMultiInput/SubresourceMultiValue.gd" type="Script" id=4]
+[ext_resource path="res://CM/UI/DataInput/Vector2/Vector2Input.tscn" type="PackedScene" id=5]
+[ext_resource path="res://CM/UI/DataInput/String/Translated.tscn" type="PackedScene" id=6]
+
+[node name="FieldItem" type="HBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 42.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VarName" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 180.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 180, 0 )
+text = "[variable name]"
+
+[node name="VarType" type="Label" parent="."]
+margin_left = 184.0
+margin_top = 5.0
+margin_right = 364.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 180, 0 )
+text = "[variable type]"
+
+[node name="VarSubtype" type="Label" parent="."]
+margin_left = 368.0
+margin_top = 5.0
+margin_right = 548.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 180, 0 )
+text = "[variable subtype]"
+
+[node name="VarValue" type="LineEdit" parent="."]
+margin_left = 552.0
+margin_right = 732.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 180, 0 )
+text = "value"
+
+[node name="ValueSelector" type="OptionButton" parent="."]
+visible = false
+margin_left = 736.0
+margin_right = 916.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+script = ExtResource( 1 )
+
+[node name="ValueDisplay" type="Label" parent="."]
+visible = false
+margin_left = 736.0
+margin_top = 5.0
+margin_right = 916.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 180, 0 )
+
+[node name="ValueCheckBox" type="CheckBox" parent="."]
+visible = false
+margin_left = 736.0
+margin_right = 760.0
+margin_bottom = 24.0
+
+[node name="ValueColor" type="ColorPickerButton" parent="."]
+visible = false
+margin_left = 736.0
+margin_right = 916.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+
+[node name="TextureValue" type="TextureRect" parent="."]
+margin_left = 736.0
+margin_right = 736.0
+margin_bottom = 36.0
+
+[node name="SubresourceMultiValue" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 740.0
+margin_right = 759.0
+margin_bottom = 36.0
+script = ExtResource( 4 )
+
+[node name="SubMultiAddButton" type="Button" parent="SubresourceMultiValue"]
+margin_right = 19.0
+margin_bottom = 32.0
+text = "+"
+
+[node name="SingletonMulti" parent="." instance=ExtResource( 3 )]
+visible = false
+margin_left = 740.0
+margin_right = 920.0
+margin_bottom = 24.0
+
+[node name="VarValueLong" type="TextEdit" parent="."]
+visible = false
+margin_left = 740.0
+margin_right = 920.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 180, 120 )
+wrap_enabled = true
+
+[node name="Vector2Value" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = 740.0
+margin_right = 915.0
+margin_bottom = 24.0
+
+[node name="Translated" parent="." instance=ExtResource( 6 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 740.0
+margin_right = 748.0
+margin_bottom = 36.0
+
+[connection signal="text_changed" from="VarValue" to="." method="_on_VarValue_text_changed"]
+[connection signal="item_selected" from="ValueSelector" to="." method="_on_ValueSelector_item_selected"]
+[connection signal="toggled" from="ValueCheckBox" to="." method="_on_ValueCheckBox_toggled"]
+[connection signal="color_changed" from="ValueColor" to="." method="_on_ValueColor_color_changed"]
+[connection signal="pressed" from="SubresourceMultiValue/SubMultiAddButton" to="." method="_on_SubMultiAddButton_pressed"]
+[connection signal="state_changed" from="SingletonMulti" to="." method="_on_SingletonMulti_state_changed"]
+[connection signal="text_changed" from="VarValueLong" to="." method="_on_VarValueLong_text_changed"]
+[connection signal="value_changed" from="Vector2Value" to="." method="_on_Vector2Value_value_changed"]
+[connection signal="value_changed" from="Translated" to="." method="_on_Translated_value_changed"]

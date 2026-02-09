@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/Filters/Filter.gd" type="Script" id=1]
+[ext_resource path="res://CM/UI/DataInput/ValueSelector.gd" type="Script" id=2]
+
+[node name="HBoxContainer" type="HBoxContainer" groups=["GameContext"]]
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 3.0
+margin_bottom = 17.0
+
+[node name="FieldSelector" type="OptionButton" parent="."]
+margin_left = 4.0
+margin_right = 33.0
+margin_bottom = 20.0
+script = ExtResource( 2 )
+
+[node name="ItemSelector" type="OptionButton" parent="."]
+margin_left = 37.0
+margin_right = 66.0
+margin_bottom = 20.0
+disabled = true
+script = ExtResource( 2 )
+
+[node name="ApplyButton" type="Button" parent="."]
+margin_left = 70.0
+margin_right = 118.0
+margin_bottom = 20.0
+disabled = true
+text = "Apply"
+
+[connection signal="item_selected" from="FieldSelector" to="." method="_on_FieldSelector_item_selected"]
+[connection signal="item_selected" from="ItemSelector" to="." method="_on_ItemSelector_item_selected"]
+[connection signal="pressed" from="ApplyButton" to="." method="_on_ApplyButton_pressed"]

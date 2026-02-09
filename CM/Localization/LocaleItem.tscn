@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CM/Localization/LocaleItem.gd" type="Script" id=1]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code" type="Label" parent="."]
+margin_top = 8.0
+margin_bottom = 32.0
+
+[node name="Name" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 4.0
+margin_bottom = 32.0
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 8.0
+margin_right = 27.0
+margin_bottom = 40.0
+text = "-"
+
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]

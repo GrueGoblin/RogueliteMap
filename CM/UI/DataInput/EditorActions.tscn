@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CM/UI/DataInput/EditorActions.gd" type="Script" id=1]
+
+[node name="EditorActions" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="."]
+margin_right = 41.0
+margin_bottom = 40.0
+disabled = true
+text = "Save"
+
+[node name="RenameButton" type="Button" parent="."]
+margin_left = 45.0
+margin_right = 109.0
+margin_bottom = 40.0
+text = "Rename"
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 113.0
+margin_right = 168.0
+margin_bottom = 40.0
+text = "Delete"
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="RenameButton" to="." method="_on_RenameButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
