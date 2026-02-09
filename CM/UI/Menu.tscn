@@ -20,7 +20,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1024.0
-margin_bottom = 248.0
+margin_bottom = 178.0
 rect_min_size = Vector2( 1024, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -28,77 +28,77 @@ __meta__ = {
 
 [node name="MainLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 24.0
+margin_bottom = 14.0
 text = "Content Manager"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 28.0
+margin_top = 18.0
 margin_right = 1024.0
-margin_bottom = 46.0
+margin_bottom = 36.0
 rect_min_size = Vector2( 0, 18 )
 
 [node name="ModelListLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
-margin_top = 50.0
+margin_top = 40.0
 margin_right = 1024.0
-margin_bottom = 74.0
+margin_bottom = 54.0
 text = "Existing Content types"
 
 [node name="GroupFilter" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 78.0
+margin_top = 58.0
 margin_right = 1024.0
-margin_bottom = 108.0
+margin_bottom = 78.0
 
 [node name="GroupFilterLabel" type="Label" parent="ScrollContainer/VBoxContainer/GroupFilter"]
 margin_top = 3.0
-margin_right = 95.0
-margin_bottom = 27.0
+margin_right = 76.0
+margin_bottom = 17.0
 text = "Group Filter"
 
 [node name="AllGroups" type="Button" parent="ScrollContainer/VBoxContainer/GroupFilter"]
-margin_left = 99.0
-margin_right = 133.0
-margin_bottom = 30.0
+margin_left = 80.0
+margin_right = 109.0
+margin_bottom = 20.0
 text = "All"
 
 [node name="Ungrouped" type="Button" parent="ScrollContainer/VBoxContainer/GroupFilter"]
-margin_left = 137.0
-margin_right = 244.0
-margin_bottom = 30.0
+margin_left = 113.0
+margin_right = 195.0
+margin_bottom = 20.0
 text = "Ungrouped"
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GroupFilter"]
-margin_left = 248.0
+margin_left = 199.0
 margin_top = 3.0
-margin_right = 313.0
-margin_bottom = 27.0
+margin_right = 249.0
+margin_bottom = 17.0
 text = "Groups:"
 
 [node name="GroupScrollContainer" type="ScrollContainer" parent="ScrollContainer/VBoxContainer/GroupFilter"]
-margin_left = 317.0
-margin_right = 817.0
-margin_bottom = 30.0
+margin_left = 253.0
+margin_right = 753.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 500, 0 )
 scroll_vertical_enabled = false
 
 [node name="Groups" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/GroupFilter/GroupScrollContainer"]
 
 [node name="AddGroup" type="Button" parent="ScrollContainer/VBoxContainer/GroupFilter"]
-margin_left = 821.0
-margin_right = 840.0
-margin_bottom = 30.0
+margin_left = 757.0
+margin_right = 777.0
+margin_bottom = 20.0
 hint_tooltip = "Add a new group."
 text = "+"
 
 [node name="ModelList" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 112.0
+margin_top = 82.0
 margin_right = 1024.0
-margin_bottom = 112.0
+margin_bottom = 82.0
 
 [node name="AddButton" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 116.0
+margin_top = 86.0
 margin_right = 1024.0
-margin_bottom = 146.0
+margin_bottom = 106.0
 text = "Add"
 
 [node name="TextureButton" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
@@ -120,21 +120,21 @@ margin_right = 512.0
 stretch_mode = 3
 
 [node name="ReGeneateButton" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 150.0
+margin_top = 110.0
 margin_right = 1024.0
-margin_bottom = 180.0
+margin_bottom = 130.0
 text = "ReGeneate Models"
 
 [node name="LocalizationButton" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 184.0
+margin_top = 134.0
 margin_right = 1024.0
-margin_bottom = 214.0
+margin_bottom = 154.0
 text = "Localization"
 
 [node name="QuitButton" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 218.0
+margin_top = 158.0
 margin_right = 1024.0
-margin_bottom = 248.0
+margin_bottom = 178.0
 text = "Quit"
 
 [node name="DestructionDialog" type="ConfirmationDialog" parent="."]
@@ -173,16 +173,16 @@ anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
-margin_bottom = -46.0
+margin_bottom = -36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NGContent" type="VBoxContainer" parent="NewGroupDialogue/NGContainer"]
-margin_left = 386.0
-margin_top = 236.0
-margin_right = 621.0
-margin_bottom = 298.0
+margin_left = 413.0
+margin_top = 251.0
+margin_right = 595.0
+margin_bottom = 293.0
 
 [node name="NewGroupInstruction" type="Label" parent="NewGroupDialogue/NGContainer/NGContent"]
 margin_right = 182.0
