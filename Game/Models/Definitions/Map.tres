@@ -1,0 +1,46 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://CM/Resources/ContentTypeField.gd" type="Script" id=1]
+[ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=2]
+[ext_resource path="res://CM/Resources/PlaceholderContentTemplate.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+var_name = "name"
+var_type = "String"
+var_subtype = ""
+default_value = ""
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = false
+can_remove = false
+force_setter = false
+force_getter = false
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+use_content_type_name = true
+references_blacklist = [  ]
+prefixes = {
+}
+sufix = ""
+copies = 1
+
+[resource]
+script = ExtResource( 2 )
+name = "Map"
+fields = [ SubResource( 1 ) ]
+relations = {
+}
+placeholder_template = SubResource( 2 )
+singleton = false
+subresource_only = false
+type_scaffold = false
+inherits = ""
+save_encrypted = false
+values_locked = {
+}
+description = "A single map with locations + connections generated"
+new = false

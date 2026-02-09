@@ -1,0 +1,83 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://CM/Resources/ContentTypeField.gd" type="Script" id=1]
+[ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=2]
+[ext_resource path="res://CM/Resources/PlaceholderContentTemplate.gd" type="Script" id=3]
+[ext_resource path="res://CM/Resources/ContentRelation.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+var_name = "name"
+var_type = "String"
+var_subtype = ""
+default_value = ""
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = false
+can_remove = false
+force_setter = false
+force_getter = false
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+var_name = "icon"
+var_type = "Named Resource"
+var_subtype = "Texture"
+default_value = "res://Game/Graphics/{type}/{variable}/{name}.png"
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+var_name = "display_name"
+var_type = "String"
+var_subtype = "Translated"
+default_value = ""
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+use_content_type_name = true
+references_blacklist = [  ]
+prefixes = {
+}
+sufix = ""
+copies = 1
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 4 )
+rel_resource_type = "Location"
+key_variable_name = "location_type"
+
+[resource]
+script = ExtResource( 2 )
+name = "LocationType"
+fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+relations = {
+"Location": [ SubResource( 5 ) ]
+}
+placeholder_template = SubResource( 4 )
+singleton = true
+subresource_only = false
+type_scaffold = false
+inherits = ""
+save_encrypted = false
+values_locked = {
+}
+description = "A singleton for different location types to navigate."
+new = false

@@ -8,10 +8,120 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "ActiveRecord",
+"language": "GDScript",
+"path": "res://CM/Resources/ActiveRecord.gd"
+}, {
+"base": "Resource",
+"class": "CMSettings",
+"language": "GDScript",
+"path": "res://CM/Settings.gd"
+}, {
+"base": "Resource",
+"class": "ContentCollection",
+"language": "GDScript",
+"path": "res://CM/Models/ContentCollection.gd"
+}, {
+"base": "Resource",
+"class": "ContentFieldType",
+"language": "GDScript",
+"path": "res://CM/Resources/ContentFieldType.gd"
+}, {
+"base": "Resource",
+"class": "ContentRelation",
+"language": "GDScript",
+"path": "res://CM/Resources/ContentRelation.gd"
+}, {
+"base": "Resource",
+"class": "ContentType",
+"language": "GDScript",
+"path": "res://CM/Resources/ContentType.gd"
+}, {
+"base": "Resource",
+"class": "ContentTypeField",
+"language": "GDScript",
+"path": "res://CM/Resources/ContentTypeField.gd"
+}, {
+"base": "Resource",
+"class": "FieldSubType",
+"language": "GDScript",
+"path": "res://CM/Models/FieldSubType.gd"
+}, {
+"base": "Resource",
+"class": "Location",
+"language": "GDScript",
+"path": "res://Game/Models/Location.gd"
+}, {
+"base": "Resource",
+"class": "LocationType",
+"language": "GDScript",
+"path": "res://Game/Models/LocationType.gd"
+}, {
+"base": "Resource",
+"class": "Map",
+"language": "GDScript",
+"path": "res://Game/Models/Map.gd"
+}, {
+"base": "Resource",
+"class": "PlaceholderContentTemplate",
+"language": "GDScript",
+"path": "res://CM/Resources/PlaceholderContentTemplate.gd"
+}, {
+"base": "Object",
+"class": "ResourceEncryptor",
+"language": "GDScript",
+"path": "res://CM/ResourceEncryptor.gd"
+}, {
+"base": "Object",
+"class": "ScriptWriter",
+"language": "GDScript",
+"path": "res://CM/ScriptWriter.gd"
+}, {
+"base": "Resource",
+"class": "SecondaryContext",
+"language": "GDScript",
+"path": "res://CM/Context/Scenes/SecondaryContext.gd"
+}, {
+"base": "Resource",
+"class": "StandardFeature",
+"language": "GDScript",
+"path": "res://CM/Models/StandardFeature.gd"
+}, {
+"base": "OptionButton",
+"class": "ValueSelector",
+"language": "GDScript",
+"path": "res://CM/UI/DataInput/ValueSelector.gd"
+} ]
+_global_script_class_icons={
+"ActiveRecord": "",
+"CMSettings": "",
+"ContentCollection": "",
+"ContentFieldType": "",
+"ContentRelation": "",
+"ContentType": "",
+"ContentTypeField": "",
+"FieldSubType": "",
+"Location": "",
+"LocationType": "",
+"Map": "",
+"PlaceholderContentTemplate": "",
+"ResourceEncryptor": "",
+"ScriptWriter": "",
+"SecondaryContext": "",
+"StandardFeature": "",
+"ValueSelector": ""
+}
+
 [application]
 
 config/name="Roguelite Map"
 config/icon="res://icon.png"
+
+[autoload]
+
+Content="*res://CM/Content.gd"
 
 [gui]
 
