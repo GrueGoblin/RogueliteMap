@@ -10,6 +10,7 @@ export (Dictionary) var connections_per_level
 
 func generate_locations():
 	# generate locations on grid
+	# rules - minimum 2 locations per level, maximum is determined by the map
 	
 	# generate location connections
 	# rules:

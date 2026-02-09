@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://CM/Resources/ContentTypeField.gd" type="Script" id=1]
 [ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=2]
@@ -19,6 +19,36 @@ can_remove = false
 force_setter = false
 force_getter = false
 
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+var_name = "levels"
+var_type = "int"
+var_subtype = ""
+default_value = "5"
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+var_name = "max_locations"
+var_type = "int"
+var_subtype = ""
+default_value = "5"
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
 use_content_type_name = true
@@ -31,7 +61,7 @@ copies = 1
 [resource]
 script = ExtResource( 2 )
 name = "Map"
-fields = [ SubResource( 1 ) ]
+fields = [ SubResource( 1 ), SubResource( 3 ), SubResource( 4 ) ]
 relations = {
 }
 placeholder_template = SubResource( 2 )
@@ -42,5 +72,9 @@ inherits = ""
 save_encrypted = false
 values_locked = {
 }
-description = "A single map with locations + connections generated"
+description = "A single map with locations + connections generated
+
+levels - amount of levels for this map
+
+max_locations - max locations per level"
 new = false
