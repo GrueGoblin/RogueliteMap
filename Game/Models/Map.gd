@@ -6,14 +6,22 @@ export (Array) var locations
 export (Dictionary) var locations_per_level
 
 export (Array) var connections
-export (Dictionary) var connections_per_level
+#export (Dictionary) var connections_per_level
+
+func _init():
+	for i in levels:
+		locations_per_level[i] = []
+		#connections_per_level[i] = []
 
 func generate_locations():
 	# generate locations on grid
 	# rules - minimum 2 locations per level, maximum is determined by the map
-	for i in levels:
-		var count = floor(rand_range(2, locations_per_level+0.99))
-		locations_per_level
+	for level in levels:
+		var positions = range(max_locations)
+		positions.shuffle()
+		var count = locations_count()
+		for i in count:
+			var location = Location.new()
 	
 	# generate location connections
 	# rules:
@@ -23,3 +31,7 @@ func generate_locations():
 	# 3. connections can't cross
 	# 4. there is limited amount of connections per level
 	pass
+
+# locations per level, minimum 2 locations per level, maximum is determined by the map
+func locations_count():
+	return floor(rand_range(2, max_locations-2+0.99))
