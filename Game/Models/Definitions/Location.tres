@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=1]
 [ext_resource path="res://CM/Resources/PlaceholderContentTemplate.gd" type="Script" id=2]
@@ -49,11 +49,27 @@ can_remove = true
 force_setter = false
 force_getter = false
 
+[sub_resource type="Resource" id=5]
+script = ExtResource( 3 )
+var_name = "level"
+var_type = "int"
+var_subtype = ""
+default_value = "0"
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
 use_content_type_name = true
 references_blacklist = [  ]
 prefixes = {
+"location_type": ""
 }
 sufix = ""
 copies = 1
@@ -61,7 +77,7 @@ copies = 1
 [resource]
 script = ExtResource( 1 )
 name = "Location"
-fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 5 ) ]
 relations = {
 }
 placeholder_template = SubResource( 4 )
@@ -72,5 +88,9 @@ inherits = ""
 save_encrypted = false
 values_locked = {
 }
-description = ""
+description = "Location class.
+
+Level = as the map goes in certain direction, the level multiplied by it is the location's base position.
+
+Position - position on map"
 new = false
