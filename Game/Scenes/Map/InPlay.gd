@@ -9,7 +9,10 @@ const edge_up = 300
 const edge_down = 725
 
 func _ready():
-	#self.map = Map.new()
+	var m = Map.new()
+	m.levels = 10
+	m.generate_locations()
+	self.map = m
 	pass
 
 func set_map(value : Map):
@@ -17,6 +20,8 @@ func set_map(value : Map):
 		map.disconnect("changed",self,"actualize")
 	map = value
 	map.connect("changed",self,"actualize")	
+	for location in map.locations:
+		$Locations.add_child(location.instance_as("Display"))
 	actualize()
 	
 func actualize():

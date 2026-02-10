@@ -1,0 +1,22 @@
+
+extends Node2D
+
+var location : Location setget set_location
+
+func _ready():
+	#self.location = Location.new()
+	position = location.position
+	pass
+
+func set_location(value : Location):
+	if location:
+		location.disconnect("changed",self,"actualize")
+	location = value
+	location.connect("changed",self,"actualize")	
+	$LocationType.location_type = location.location_type
+	actualize()
+	
+func actualize():
+	# set scene values
+	pass
+
