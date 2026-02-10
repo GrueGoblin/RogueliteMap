@@ -22,6 +22,7 @@ func generate_locations():
 		var count = locations_count()
 		for i in count:
 			var location = Location.new()
+			location.position = Vector2(positions.pop_front() * 50 + 50, 900 - level * 50)
 	
 	# generate location connections
 	# rules:

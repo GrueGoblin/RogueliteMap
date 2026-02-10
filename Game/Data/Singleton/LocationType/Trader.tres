@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Game/Graphics/LocationType/icon/Trader.png" type="Texture" id=1]
+[ext_resource path="res://Game/Models/LocationType.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Trader"
+icon = ExtResource( 1 )
+display_name = "LocationType__Trader__display_name"
