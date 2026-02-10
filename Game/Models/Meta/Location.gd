@@ -11,6 +11,7 @@ export var name : String setget set_name
 export var location_type : Resource setget set_location_type
 export var position : Vector2 setget set_position
 export var level := 0 setget set_level
+export var starting := false setget set_starting
 
 func _to_string():
 	return "[Location:{name}]".format({"name" : get("name")})
@@ -42,4 +43,7 @@ func set_position(value):
 	emit_changed()
 func set_level(value):
 	level = value
+	emit_changed()
+func set_starting(value):
+	starting = value
 	emit_changed()

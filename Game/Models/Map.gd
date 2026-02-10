@@ -26,6 +26,10 @@ func generate_locations():
 			var location = Location.new()
 			location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
 			location.location_type = Content.generate("LocationType")
+			
+			if i == 0:
+				location.starting = true
+			
 			locations.append(location)
 			locations_per_level[level].append(location)
 	
