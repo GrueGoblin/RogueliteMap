@@ -5,7 +5,7 @@ var location : Location setget set_location
 
 func _ready():
 	#self.location = Location.new()
-	position = location.position
+	position = location.actual_position
 	pass
 
 func set_location(value : Location):

@@ -14,6 +14,7 @@ export var level := 0 setget set_level
 export var starting := false setget set_starting
 export var current := false setget set_current
 export var visited := false setget set_visited
+export var actual_position : Vector2 setget set_actual_position
 
 func _to_string():
 	return "[Location:{name}]".format({"name" : get("name")})
@@ -54,4 +55,7 @@ func set_current(value):
 	emit_changed()
 func set_visited(value):
 	visited = value
+	emit_changed()
+func set_actual_position(value):
+	actual_position = value
 	emit_changed()

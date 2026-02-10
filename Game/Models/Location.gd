@@ -10,3 +10,11 @@ func set_current(value):
 		self.visited = true
 		emit_signal("current")
 	emit_changed()
+
+func calculate_position():
+	actual_position = Vector2(position.x * 150 + 100, 900 - position.y * 90)
+
+func set_position(value):
+	position = value
+	calculate_position()
+	emit_changed()

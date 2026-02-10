@@ -24,7 +24,8 @@ func generate_locations():
 		var count = locations_count()
 		for i in count:
 			var location = Location.new()
-			location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
+			location.position = Vector2(positions.pop_front(), level)
+			#location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
 			location.location_type = Content.generate("LocationType")
 			
 			if i == 0:

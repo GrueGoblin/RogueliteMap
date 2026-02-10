@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=12 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=1]
 [ext_resource path="res://CM/Resources/PlaceholderContentTemplate.gd" type="Script" id=2]
@@ -109,6 +109,21 @@ can_remove = true
 force_setter = false
 force_getter = false
 
+[sub_resource type="Resource" id=9]
+script = ExtResource( 3 )
+var_name = "actual_position"
+var_type = "Vector2"
+var_subtype = ""
+default_value = ""
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
 use_content_type_name = true
@@ -122,7 +137,7 @@ copies = 1
 [resource]
 script = ExtResource( 1 )
 name = "Location"
-fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ]
+fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ]
 relations = {
 }
 placeholder_template = SubResource( 4 )
