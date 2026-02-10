@@ -12,6 +12,8 @@ export var location_type : Resource setget set_location_type
 export var position : Vector2 setget set_position
 export var level := 0 setget set_level
 export var starting := false setget set_starting
+export var current := false setget set_current
+export var visited := false setget set_visited
 
 func _to_string():
 	return "[Location:{name}]".format({"name" : get("name")})
@@ -46,4 +48,10 @@ func set_level(value):
 	emit_changed()
 func set_starting(value):
 	starting = value
+	emit_changed()
+func set_current(value):
+	current = value
+	emit_changed()
+func set_visited(value):
+	visited = value
 	emit_changed()
