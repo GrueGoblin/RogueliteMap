@@ -4,6 +4,7 @@ class_name Map
 
 export (Array) var locations
 export (Dictionary) var locations_per_level
+export (Dictionary) var locations_by_position
 
 export (Array) var connections
 #export (Dictionary) var connections_per_level
@@ -16,7 +17,6 @@ func _init():
 
 func generate_locations():
 	# generate locations on grid
-	# rules - minimum 2 locations per level, maximum is determined by the map
 	for level in levels:
 		locations_per_level[level] = []
 		var positions = range(max_locations)
@@ -33,6 +33,7 @@ func generate_locations():
 			
 			locations.append(location)
 			locations_per_level[level].append(location)
+			locations_by_position[location.position] = location
 	
 	# generate location connections
 	# rules:
