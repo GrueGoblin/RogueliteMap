@@ -26,7 +26,7 @@ func generate_locations():
 			var location = Location.new()
 			location.position = Vector2(positions.pop_front(), level)
 			#location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
-			location.location_type = Content.generate("LocationType")
+			location.location_type = Content.get_random("LocationType")
 			
 			if i == 0:
 				location.starting = true

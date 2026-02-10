@@ -8,6 +8,7 @@ const icon_path = "res://Game/Graphics/LocationType/icon/{name}.png"
 export (Texture) var icon setget set_icon, get_icon
 const display_name_key = "LocationType__{item_name}__display_name"
 export var display_name : String setget set_display_name, get_display_name
+export var weight := 1.0 setget set_weight
 
 func _to_string():
 	return "[LocationType:{name}]".format({"name" : get("name")})
@@ -43,6 +44,9 @@ func get_display_name():
 		
 func set_display_name(value):
 	display_name = value
+	emit_changed()
+func set_weight(value):
+	weight = value
 	emit_changed()
 
 func get_locations(additional_filters := {}):

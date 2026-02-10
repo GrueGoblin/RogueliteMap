@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://CM/Resources/ContentTypeField.gd" type="Script" id=1]
 [ext_resource path="res://CM/Resources/ContentType.gd" type="Script" id=2]
@@ -50,6 +50,21 @@ can_remove = true
 force_setter = false
 force_getter = false
 
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+var_name = "weight"
+var_type = "float"
+var_subtype = ""
+default_value = "1.0"
+emit_change = true
+var_subvalue_type = "String"
+var_subvalue_subtype = ""
+default_subvalue_value = ""
+can_rename = true
+can_remove = true
+force_setter = false
+force_getter = false
+
 [sub_resource type="Resource" id=4]
 script = ExtResource( 3 )
 use_content_type_name = true
@@ -67,7 +82,7 @@ key_variable_name = "location_type"
 [resource]
 script = ExtResource( 2 )
 name = "LocationType"
-fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 6 ) ]
 relations = {
 "Location": [ SubResource( 5 ) ]
 }

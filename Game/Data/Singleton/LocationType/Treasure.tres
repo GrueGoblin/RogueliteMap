@@ -8,3 +8,4 @@ script = ExtResource( 2 )
 name = "Treasure"
 icon = ExtResource( 1 )
 display_name = "LocationType__Treasure__display_name"
+weight = 0.3

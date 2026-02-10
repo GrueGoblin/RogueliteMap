@@ -8,3 +8,4 @@ script = ExtResource( 2 )
 name = "Danger"
 icon = ExtResource( 1 )
 display_name = "LocationType__Danger__display_name"
+weight = 1.0
