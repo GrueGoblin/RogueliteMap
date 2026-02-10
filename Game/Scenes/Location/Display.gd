@@ -17,6 +17,7 @@ func set_location(value : Location):
 	actualize()
 	
 func actualize():
+	$VisitedIndicator.visible = location.visited
 	# set scene values
 	pass
 
