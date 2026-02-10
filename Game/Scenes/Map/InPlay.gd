@@ -13,6 +13,7 @@ func _ready():
 	m.levels = 10
 	m.generate_locations()
 	self.map = m
+	print(map.locations_per_level)
 	pass
 
 func set_map(value : Map):

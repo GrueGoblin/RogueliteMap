@@ -9,22 +9,25 @@ export (Array) var connections
 #export (Dictionary) var connections_per_level
 
 func _init():
-	for i in levels:
-		locations_per_level[i] = []
+	pass
+#	for i in levels:
+#		locations_per_level[i] = []
 		#connections_per_level[i] = []
 
 func generate_locations():
 	# generate locations on grid
 	# rules - minimum 2 locations per level, maximum is determined by the map
 	for level in levels:
+		locations_per_level[level] = []
 		var positions = range(max_locations)
 		positions.shuffle()
 		var count = locations_count()
 		for i in count:
 			var location = Location.new()
-			location.position = Vector2(positions.pop_front() * 100 + 50, 900 - level * 90)
+			location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
 			location.location_type = Content.generate("LocationType")
 			locations.append(location)
+			locations_per_level[level].append(location)
 	
 	# generate location connections
 	# rules:
@@ -37,4 +40,4 @@ func generate_locations():
 
 # locations per level, minimum 2 locations per level, maximum is determined by the map
 func locations_count():
-	return floor(rand_range(2, max_locations-2+0.99))
+	return floor(rand_range(2, max_locations+0.99))
