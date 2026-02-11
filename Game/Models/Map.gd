@@ -82,8 +82,21 @@ func generate_location_connections():
 # 2. connect direct paths (same x position)/connect orphaned nodes
 	for location in locations_wo_followup:
 		location = location as Location
-		if location.position.x < levels - 1:
-			pass
+		if location.position.y < levels - 1:
+			var target_location = closest_location_to(location.position + Vector2(0,1)) as Location
+			print("target_location: " + str(target_location))
+			var connection = location.connect_to(target_location) as MapConnection
+			connections.append(connection)
+			locations_wo_source.erase(target_location)
+			
+	for location in locations_wo_source:
+		location = location as Location
+		if location.position.y > 0:
+			var source_location = closest_location_to(location.position + Vector2(0,-1)) as Location
+			#print("target_location: " + str(target_location))
+			var connection = source_location.connect_to(location) as MapConnection
+			connections.append(connection)
+	
 	# 3. add redundancies?
 	
 	
