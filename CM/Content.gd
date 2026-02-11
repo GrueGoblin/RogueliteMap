@@ -402,7 +402,7 @@ func generate(type : String, params:={}):
 func get_random(type : String, weighted = true):
 	var all := get_all(type) as Array
 	if weighted && all.size() > 0 && all[0].get("weight"):
-		print("returning random weighted item")
+		#print("returning random weighted item")
 		var total := 0.0
 		var counter := 0.0
 		for item in all:

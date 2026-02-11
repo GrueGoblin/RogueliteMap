@@ -46,15 +46,15 @@ func check_connections(location : Location):
 
 func generate_location_connections():
 	# generate location connections
-	var locations_wo_followup = locations.duplicate()
-	var locations_wo_source = locations.duplicate()
+	var locations_wo_followup = locations.duplicate() as Array
+	var locations_wo_source = locations.duplicate() as Array
 	
 	#var connection = MapConnection.new()
 #	connection.from = locations[0]
 #	connection.to = locations[6]
 #	connections.append(connection)
 	# rules:
-	# 1. every location needs to lead somewhere/ except final one?
+	# 1. every location needs to be connected to some previous one (excluding the starting ones)
 	for location in locations:
 		location = location as Location
 		var level = location.level
@@ -63,15 +63,28 @@ func generate_location_connections():
 			var next_level = locations_per_level[level -1]
 			next_level.shuffle()
 #			var connection = MapConnection.new()
+			var connection = next_level[0].connect_to(location)
+			connections.append(connection)
+			locations_wo_followup.erase(next_level[0])
+#		else:
+#			locations_wo_followup.erase(location)
+			pass
+	
+	# 1. every location needs to lead somewhere/ except final one?
+	for location in locations_wo_followup:
+		location = location as Location
+		var level = location.level
+		if level < levels-1:
+			# connect to random
+			var next_level = locations_per_level[level +1]
+			next_level.shuffle()
+		#			var connection = MapConnection.new()
 			var connection = location.connect_to(next_level[0])
 			connections.append(connection)
-			pass
-	# 2. every location needs to be connected to some previous one (excluding the starting ones)
-	
-	
-	# 3. Connections go only one level up
-	# 4. connections can't cross
-	# 5. there is limited amount of connections per level
+			#locations_wo_followup.erase(location)
+		# 3. Connections go only one level up
+		# 4. connections can't cross
+		# 5. there is limited amount of connections per level
 	pass
 
 # locations per level, minimum 2 locations per level, maximum is determined by the map
