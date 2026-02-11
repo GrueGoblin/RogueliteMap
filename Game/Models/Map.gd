@@ -79,7 +79,7 @@ func generate_location_connections():
 			locations_wo_followup.erase(source_location)
 			locations_wo_source.erase(target_location)
 
-# 2. connect direct paths (same x position)/connect orphaned nodes
+	# 2. connect direct paths (same x position)/connect orphaned nodes
 	for location in locations_wo_followup:
 		location = location as Location
 		if location.position.y < levels - 1:
@@ -93,7 +93,6 @@ func generate_location_connections():
 		location = location as Location
 		if location.position.y > 0:
 			var source_location = closest_location_to(location.position + Vector2(0,-1)) as Location
-			#print("target_location: " + str(target_location))
 			var connection = source_location.connect_to(location) as MapConnection
 			connections.append(connection)
 	
