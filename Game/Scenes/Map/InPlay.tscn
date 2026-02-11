@@ -1,13 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Game/Scenes/Map/InPlay.gd" type="Script" id=1]
-[ext_resource path="res://Game/Graphics/TestBck.png" type="Texture" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 2
+octaves = 7
+period = 256.0
+persistence = 0.615
+lacunarity = 1.59
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" groups=["MapContext"]]
 script = ExtResource( 1 )
 
 [node name="TestBck" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+modulate = Color( 0.972549, 1, 0.8, 1 )
+position = Vector2( 0, 0.999969 )
+scale = Vector2( 1.56641, 2.00195 )
+texture = SubResource( 2 )
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
