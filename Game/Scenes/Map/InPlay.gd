@@ -6,7 +6,7 @@ var map : Map setget set_map
 const mouse_sensitivity = 50
 
 const edge_up = 300
-const edge_down = 725
+const edge_down = 1280-300
 
 func _ready():
 	var m = Map.new()

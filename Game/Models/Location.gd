@@ -16,7 +16,7 @@ func set_current(value):
 	emit_changed()
 
 func calculate_position():
-	actual_position = Vector2(position.x * 150 + 100, 900 - position.y * 90) + Vector2(rand_range(-spread,spread), rand_range(-spread,spread))
+	actual_position = Vector2(position.x * 150 + 100, 1200 - position.y * 124) + Vector2(rand_range(-spread,spread), rand_range(-spread,spread))
 
 func set_position(value):
 	position = value
