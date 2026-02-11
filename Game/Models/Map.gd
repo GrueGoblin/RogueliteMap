@@ -48,6 +48,15 @@ func outline_location(position : Vector2, inverse = false):
 		return locations_by_position[position]
 	return null
 
+func closest_location_to(position : Vector2, search_direction = 1):
+	for dist in max_locations:
+		for dir in [-search_direction, search_direction]:
+			var pos = position + Vector2(dir * dist, 0)
+			if locations_by_position.has(pos):
+				return locations_by_position[pos]
+	return null
+		
+
 func generate_location_connections():
 	# generate location connections
 	var locations_wo_followup = locations.duplicate() as Array
@@ -69,51 +78,15 @@ func generate_location_connections():
 			connections.append(connection)
 			locations_wo_followup.erase(source_location)
 			locations_wo_source.erase(target_location)
-		pass
-	#var connection = MapConnection.new()
-#	connection.from = locations[0]
-#	connection.to = locations[6]
-#	connections.append(connection)
-	
-	
-	# 2. connect direct paths (same x position)
-	# 3. connect orphaned nodes
-	# 4. add redundancies?
-	
-	
-#	# 1. every location needs to be connected to some previous one (excluding the starting ones)
-#	for location in locations:
-#		location = location as Location
-#		var level = location.level
-#		if level < levels && level > 0:
-#			# connect to random
-#			var next_level = locations_per_level[level -1]
-#			next_level.shuffle()
-##			var connection = MapConnection.new()
-#			var connection = next_level[0].connect_to(location)
-#			connections.append(connection)
-#			locations_wo_followup.erase(next_level[0])
-##		else:
-##			locations_wo_followup.erase(location)
-#			pass
-#
-#	# 1. every location needs to lead somewhere/ except final one?
-#	for location in locations_wo_followup:
-#		location = location as Location
-#		var level = location.level
-#		if level < levels-1:
-#			# connect to random
-#			var next_level = locations_per_level[level +1]
-#			next_level.shuffle()
-#		#			var connection = MapConnection.new()
-#			var connection = location.connect_to(next_level[0])
-#			connections.append(connection)
-#			#locations_wo_followup.erase(location)
-#		# 3. Connections go only one level up
-#		# 4. connections can't cross
-#		# 5. there is limited amount of connections per level
-	pass
 
+# 2. connect direct paths (same x position)/connect orphaned nodes
+	for location in locations_wo_followup:
+		location = location as Location
+		if location.position.x < levels - 1:
+			pass
+	# 3. add redundancies?
+	
+	
 # locations per level, minimum 2 locations per level, maximum is determined by the map
 func locations_count():
 	return floor(rand_range(2, max_locations+0.99))
