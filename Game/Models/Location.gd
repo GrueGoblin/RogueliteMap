@@ -4,6 +4,8 @@ class_name Location
 
 signal current
 
+signal check_connections
+
 const spread = 18
 
 func set_current(value):
@@ -26,3 +28,6 @@ func connect_to(location : Location):
 	connection.from = self
 	connection.to = location
 	return connection
+
+func _to_string():
+	return "[Location:{name}]".format({"name" : get("name")}) + str(position)

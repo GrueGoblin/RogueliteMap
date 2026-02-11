@@ -32,6 +32,9 @@ func actualize():
 	# set scene values
 	pass
 
+func check_connections_for(location: Location):
+	pass
+
 func _physics_process(delta):
 	if Input.is_action_just_released("wheel_down"):
 		#$Camera2D.position.y+=mouse_sensitivity

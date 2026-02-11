@@ -7,9 +7,6 @@ func _ready():
 	#self.map_connection = MapConnection.new()
 	position = map_connection.from.actual_position
 	$Line2D.points[1] = map_connection.relative_end_position()
-	print("connection ready")
-	print(position)
-	pass
 
 func set_map_connection(value : MapConnection):
 	if map_connection:

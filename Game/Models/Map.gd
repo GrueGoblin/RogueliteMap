@@ -27,7 +27,7 @@ func generate_locations():
 			location.position = Vector2(positions.pop_front(), level)
 			location.location_type = Content.get_random("LocationType")
 			location.level = level
-			
+			location.connect("check_connections", self, "check_connections",[location])
 			if i == 0:
 				location.starting = true
 			
@@ -36,6 +36,12 @@ func generate_locations():
 			locations_by_position[location.position] = location
 	
 	
+	pass
+
+func check_connections(location : Location):
+	for connection in connections:
+		if connection.to == location:
+			print(connection)
 	pass
 
 func generate_location_connections():
@@ -52,9 +58,9 @@ func generate_location_connections():
 	for location in locations:
 		location = location as Location
 		var level = location.level
-		if level < levels-1:
+		if level < levels && level > 0:
 			# connect to random
-			var next_level = locations_per_level[level + 1]
+			var next_level = locations_per_level[level -1]
 			next_level.shuffle()
 #			var connection = MapConnection.new()
 			var connection = location.connect_to(next_level[0])
