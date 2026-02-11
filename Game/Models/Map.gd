@@ -43,16 +43,22 @@ func generate_location_connections():
 	var locations_wo_followup = locations.duplicate()
 	var locations_wo_source = locations.duplicate()
 	
-	var connection = MapConnection.new()
-	connection.from = locations[0]
-	connection.to = locations[6]
-	connections.append(connection)
+	#var connection = MapConnection.new()
+#	connection.from = locations[0]
+#	connection.to = locations[6]
+#	connections.append(connection)
 	# rules:
 	# 1. every location needs to lead somewhere/ except final one?
 	for location in locations:
 		location = location as Location
-		if location.level < 9:
+		var level = location.level
+		if level < levels-1:
 			# connect to random
+			var next_level = locations_per_level[level + 1]
+			next_level.shuffle()
+#			var connection = MapConnection.new()
+			var connection = location.connect_to(next_level[0])
+			connections.append(connection)
 			pass
 	# 2. every location needs to be connected to some previous one (excluding the starting ones)
 	

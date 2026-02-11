@@ -20,3 +20,9 @@ func set_position(value):
 	position = value
 	calculate_position()
 	emit_changed()
+
+func connect_to(location : Location):
+	var connection = load("res://Game/Models/MapConnection.gd").new()#MapConnection.new()
+	connection.from = self
+	connection.to = location
+	return connection

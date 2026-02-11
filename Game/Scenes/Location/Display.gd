@@ -3,6 +3,8 @@ extends Node2D
 
 var location : Location setget set_location
 
+signal check_connections
+
 func _ready():
 	#self.location = Location.new()
 	position = location.actual_position
@@ -21,3 +23,8 @@ func actualize():
 	# set scene values
 	pass
 
+
+
+func _on_SelectButton_pressed():
+	emit_signal("check_connections")
+	pass # Replace with function body.

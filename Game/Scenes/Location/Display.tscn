@@ -14,8 +14,9 @@ visible = false
 texture = ExtResource( 3 )
 
 [node name="SelectButton" type="TextureButton" parent="."]
-visible = false
 margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+
+[connection signal="pressed" from="SelectButton" to="." method="_on_SelectButton_pressed"]
