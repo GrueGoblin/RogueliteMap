@@ -25,8 +25,8 @@ func generate_locations():
 		for i in count:
 			var location = Location.new()
 			location.position = Vector2(positions.pop_front(), level)
-			#location.position = Vector2(positions.pop_front() * 150 + 100, 900 - level * 90)
 			location.location_type = Content.get_random("LocationType")
+			location.level = level
 			
 			if i == 0:
 				location.starting = true
@@ -35,13 +35,31 @@ func generate_locations():
 			locations_per_level[level].append(location)
 			locations_by_position[location.position] = location
 	
+	
+	pass
+
+func generate_location_connections():
 	# generate location connections
+	var locations_wo_followup = locations.duplicate()
+	var locations_wo_source = locations.duplicate()
+	
+	var connection = MapConnection.new()
+	connection.from = locations[0]
+	connection.to = locations[6]
+	connections.append(connection)
 	# rules:
-	# 1. every location needs to be connected to some previous one (excluding the starting ones)
-	# 2. every location needs to lead somewhere
-	# 2. Connections go only one level up
-	# 3. connections can't cross
-	# 4. there is limited amount of connections per level
+	# 1. every location needs to lead somewhere/ except final one?
+	for location in locations:
+		location = location as Location
+		if location.level < 9:
+			# connect to random
+			pass
+	# 2. every location needs to be connected to some previous one (excluding the starting ones)
+	
+	
+	# 3. Connections go only one level up
+	# 4. connections can't cross
+	# 5. there is limited amount of connections per level
 	pass
 
 # locations per level, minimum 2 locations per level, maximum is determined by the map

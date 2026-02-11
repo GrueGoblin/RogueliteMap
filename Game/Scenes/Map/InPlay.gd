@@ -12,6 +12,7 @@ func _ready():
 	var m = Map.new()
 	m.levels = 10
 	m.generate_locations()
+	m.generate_location_connections()
 	self.map = m
 	print(map.locations_per_level)
 	pass
@@ -23,6 +24,8 @@ func set_map(value : Map):
 	map.connect("changed",self,"actualize")	
 	for location in map.locations:
 		$Locations.add_child(location.instance_as("Display"))
+	for connection in map.connections:
+		$Connections.add_child(connection.instance_as("InMap"))
 	actualize()
 	
 func actualize():
