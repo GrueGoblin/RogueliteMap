@@ -2,17 +2,16 @@
 
 [ext_resource path="res://Game/Scenes/Map/InPlay.gd" type="Script" id=1]
 
-[sub_resource type="OpenSimplexNoise" id=1]
-seed = 2
+[sub_resource type="OpenSimplexNoise" id=3]
 octaves = 7
 period = 256.0
-persistence = 0.615
-lacunarity = 1.59
+persistence = 0.562
+lacunarity = 2.89
 
 [sub_resource type="NoiseTexture" id=2]
 width = 800
 height = 1280
-noise = SubResource( 1 )
+noise = SubResource( 3 )
 
 [node name="Node2D" type="Node2D" groups=["MapContext"]]
 script = ExtResource( 1 )
@@ -22,7 +21,7 @@ margin_right = 800.0
 margin_bottom = 1280.0
 
 [node name="TestBck" type="Sprite" parent="."]
-modulate = Color( 0.956863, 1, 0.686275, 0.835294 )
+modulate = Color( 0.713726, 0.701961, 0.490196, 0.682353 )
 texture = SubResource( 2 )
 centered = false
 
