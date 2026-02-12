@@ -28,5 +28,6 @@ func actualize():
 
 
 func _on_SelectButton_pressed():
-	location.emit_signal("check_connections")
+	location.current = true
+	#location.emit_signal("check_connections")
 	pass # Replace with function body.

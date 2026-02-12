@@ -30,10 +30,12 @@ func generate_locations():
 			location.location_type = Content.get_random("LocationType")
 			location.level = level
 			location.connect("check_connections", self, "check_connections",[location])
+			location.connect("current",self,"set_current_location", [location])
 			if i == 0:
 				location.starting = true
 			
 			add_location(location)
+	make_starting_locations_selectable()
 
 func check_connections(location : Location):
 	for connection in connections:
@@ -43,6 +45,7 @@ func check_connections(location : Location):
 func set_current_location(location : Location):
 	current_location = location
 	for loc in locations:
+		loc.selectible = false
 		if loc != location:
 			loc.current = false
 
@@ -117,3 +120,7 @@ func generate_location_connections():
 # locations per level, minimum 2 locations per level, maximum is determined by the map
 func locations_count():
 	return floor(rand_range(2, max_locations+0.99))
+
+func make_starting_locations_selectable():
+	for location in locations_per_level[0]:
+		location.selectible = true
