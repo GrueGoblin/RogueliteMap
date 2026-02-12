@@ -9,6 +9,8 @@ export (Dictionary) var locations_by_position
 export (Array) var connections
 #export (Dictionary) var connections_per_level
 
+export (Resource) var current_location
+
 func _init():
 	pass
 #	for i in levels:
@@ -31,14 +33,27 @@ func generate_locations():
 			if i == 0:
 				location.starting = true
 			
-			locations.append(location)
-			locations_per_level[level].append(location)
-			locations_by_position[location.position] = location
+			add_location(location)
 
 func check_connections(location : Location):
 	for connection in connections:
 		if connection.to == location:
 			print(connection)
+
+func set_current_location(location : Location):
+	current_location = location
+	for loc in locations:
+		if loc != location:
+			loc.current = false
+
+func current_level():
+	return current_location.level
+
+func add_location(location : Location):
+	locations.append(location)
+	locations_per_level[location.level].append(location)
+	locations_by_position[location.position] = location
+	pass
 
 func outline_location(position : Vector2, inverse = false):
 	if inverse:
