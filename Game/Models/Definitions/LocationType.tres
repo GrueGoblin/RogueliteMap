@@ -74,7 +74,7 @@ prefixes = {
 sufix = ""
 copies = 1
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 4 )
 rel_resource_type = "Location"
 key_variable_name = "location_type"
@@ -84,7 +84,7 @@ script = ExtResource( 2 )
 name = "LocationType"
 fields = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 6 ) ]
 relations = {
-"Location": [ SubResource( 5 ) ]
+"Location": [ SubResource( 7 ) ]
 }
 placeholder_template = SubResource( 4 )
 singleton = true

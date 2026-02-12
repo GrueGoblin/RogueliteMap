@@ -16,6 +16,9 @@ func set_location_type(value : LocationType):
 	
 func actualize():
 	texture = location_type.icon
-	# set scene values
-	pass
 
+func highlight():
+	$FlashPlayer.play("Flash")
+	
+func highlight_stop():
+	$FlashPlayer.stop()

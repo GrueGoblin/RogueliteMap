@@ -15,6 +15,7 @@ export var starting := false setget set_starting
 export var current := false setget set_current
 export var visited := false setget set_visited
 export var actual_position : Vector2 setget set_actual_position
+export var selectible := false setget set_selectible
 
 func _to_string():
 	return "[Location:{name}]".format({"name" : get("name")})
@@ -58,4 +59,7 @@ func set_visited(value):
 	emit_changed()
 func set_actual_position(value):
 	actual_position = value
+	emit_changed()
+func set_selectible(value):
+	selectible = value
 	emit_changed()

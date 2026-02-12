@@ -31,3 +31,7 @@ func connect_to(location : Location):
 
 func _to_string():
 	return "[Location:{name}]".format({"name" : get("name")}) + str(position)
+
+func set_selectible(value):
+	selectible = value
+	emit_changed()

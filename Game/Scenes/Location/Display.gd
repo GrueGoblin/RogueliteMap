@@ -18,8 +18,12 @@ func set_location(value : Location):
 	
 func actualize():
 	$VisitedIndicator.visible = location.visited
-	# set scene values
-	pass
+	if location.selectible:
+		$LocationType.highlight()
+		$SelectButton.show()
+	else:
+		$LocationType.highlight_stop()
+		$SelectButton.hide()
 
 
 
