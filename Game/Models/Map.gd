@@ -11,6 +11,8 @@ export (Array) var connections
 
 export (Resource) var current_location
 
+signal location_selected
+
 func _init():
 	pass
 #	for i in levels:
@@ -48,6 +50,7 @@ func set_current_location(location : Location):
 		loc.selectible = false
 		if loc != location:
 			loc.current = false
+	emit_signal("location_selected", location)
 
 func current_level():
 	return current_location.level
