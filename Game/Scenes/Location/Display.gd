@@ -29,5 +29,6 @@ func actualize():
 
 func _on_SelectButton_pressed():
 	location.current = true
+	LocationsController.enter_location(location)
 	#location.emit_signal("check_connections")
 	pass # Replace with function body.

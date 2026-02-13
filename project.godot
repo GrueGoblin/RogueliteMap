@@ -128,7 +128,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Content="*res://CM/Content.gd"
-LocationsController="*res://Game/Controllers/LocationsController.gd"
+LocationsController="*res://Game/Controllers/LocationsController.tscn"
 
 [display]
 
