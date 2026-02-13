@@ -21,4 +21,5 @@ func highlight():
 	$FlashPlayer.play("Flash")
 	
 func highlight_stop():
-	$FlashPlayer.stop()
+	$FlashPlayer.stop(true)
+	$FlashPlayer.play("RESET")
